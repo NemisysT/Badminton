@@ -1,0 +1,120 @@
+/* src/components/PlayerCard.css */
+.player-card {
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, filter 0.3s;
+    width: 220px;
+    height: 300px; /* Increased height for better layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centering items vertically */
+    align-items: center; /* Centering items horizontally */
+    overflow: hidden;
+    position: relative; /* For the pseudo-element */
+    color: #ffffff; /* Default text color */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Base shadow for depth */
+}
+
+/* Adding a pseudo-element for a background effect */
+.player-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    opacity: 0.2; /* Makes it subtle */
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+    z-index: 0; /* Behind the text */
+}
+
+/* Profile image styling */
+.profile-image {
+    width: 60px; /* Set a smaller width for the profile image */
+    height: 60px; /* Set a smaller height for the profile image */
+    border-radius: 50%; /* Make it circular */
+    margin-bottom: 10px; /* Space between image and name */
+    object-fit: cover; /* Ensures the image covers the area properly */
+    border: 3px solid black; /* Black border around the image */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* Optional shadow for depth */
+}
+
+/* Style for player name */
+.player-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 5px;
+    z-index: 1; /* On top of the pseudo-element */
+}
+
+/* Style for player skill level */
+.player-card p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    z-index: 1; /* On top of the pseudo-element */
+}
+
+/* Hover effects */
+.player-card:hover {
+    transform: scale(1.1) translateY(-5px); /* Lift effect */
+    box-shadow: 0 4px 30px rgba(126, 241, 225, 0.8); /* Glow effect */
+    filter: brightness(1.3); /* Brightness increase for effect */
+    animation: pop 0.3s forwards; /* Pop animation */
+}
+
+/* Animation for glowing effect */
+@keyframes pop {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Stars styling */
+.stars {
+    font-size: 1.5em;
+    color: gold;
+    z-index: 1; /* On top of the pseudo-element */
+}
+
+/* Define specific background colors for each skill level with darker themes */
+.player-card.professional {
+    background: linear-gradient(135deg, #003973, #e5e5be); /* Dark Blue to Light */
+}
+
+.player-card.advanced {
+    background: linear-gradient(135deg, #005c3d, #8ed1b2); /* Dark Green to Light */
+}
+
+.player-card.intermediate {
+    background: linear-gradient(135deg, #b07f00, #ffcc00); /* Dark Gold to Light */
+}
+
+.player-card.beginner {
+    background: linear-gradient(135deg, #8e3b3b, #ffb1b1); /* Dark Red to Light */
+}
+
+/* New class for undefined skill level */
+.player-card.undefined {
+    background: linear-gradient(135deg, #3f4c6b, #606c88); /* Dark Gray Gradient */
+    color: #fff; /* Change text color for better visibility */
+}
+
+/* Add a glow effect on hover for the stars */
+.player-card:hover .stars {
+    animation: starGlow 1s infinite alternate; /* Pulsing glow effect */
+}
+
+/* Animation for the star glow */
+@keyframes starGlow {
+    0% {
+        text-shadow: 0 0 5px gold, 0 0 10px gold;
+    }
+    100% {
+        text-shadow: 0 0 15px gold, 0 0 30px gold, 0 0 60px gold;
+    }
+}
